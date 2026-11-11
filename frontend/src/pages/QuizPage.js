@@ -15,7 +15,7 @@ export default function QuizPage() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/quizzes/${id}`, {
+    axios.get(`https://quizmaster-o36d.onrender.com/api/quizzes/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => {
       setQuiz(res.data);
@@ -39,7 +39,7 @@ export default function QuizPage() {
   const handleSubmit = async () => {
     setSubmitted(true);
     const timeTaken = quiz.timeLimit * 60 - timeLeft;
-    const res = await axios.post('http://localhost:5000/api/attempts', {
+    const res = await axios.post('https://quizmaster-o36d.onrender.com/api/attempts', {
       quizId: id, answers, timeTaken
     }, { headers: { Authorization: `Bearer ${token}` } });
     setResult(res.data);

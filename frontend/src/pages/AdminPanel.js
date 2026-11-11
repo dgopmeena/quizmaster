@@ -16,7 +16,7 @@ export default function AdminPanel() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/quizzes')
+    axios.get('https://quizmaster-o36d.onrender.com/api/quizzes')
       .then(res => setQuizzes(res.data));
   }, []);
 
@@ -39,11 +39,11 @@ export default function AdminPanel() {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/quizzes', {
+      await axios.post('https://quizmaster-o36d.onrender.com/api/quizzes', {
         title, description, category, difficulty, timeLimit: Number(timeLimit), questions
       }, { headers: { Authorization: `Bearer ${token}` } });
       setMessage('Quiz created successfully!');
-      const res = await axios.get('http://localhost:5000/api/quizzes');
+      const res = await axios.get('https://quizmaster-o36d.onrender.com/api/quizzes');
       setQuizzes(res.data);
       setTitle(''); setDescription(''); setCategory('');
       setQuestions([{ questionText: '', options: ['', '', '', ''], correctAnswer: 0 }]);
@@ -53,7 +53,7 @@ export default function AdminPanel() {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/quizzes/${id}`, {
+    await axios.delete(`https://quizmaster-o36d.onrender.com/api/quizzes/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setQuizzes(quizzes.filter(q => q._id !== id));

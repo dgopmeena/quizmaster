@@ -9,7 +9,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/quizzes')
+    axios.get('https://quizmaster-o36d.onrender.com/api/quizzes')
       .then(res => setQuizzes(res.data))
       .catch(err => console.log(err));
   }, []);

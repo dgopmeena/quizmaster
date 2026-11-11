@@ -9,7 +9,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/attempts/my', {
+    axios.get('https://quizmaster-o36d.onrender.com/api/attempts/my', {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => setAttempts(res.data))
       .catch(err => console.log(err));
